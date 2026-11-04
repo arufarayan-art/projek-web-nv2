@@ -1,0 +1,1067 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+/* =====================================================
+   1. GLOBAL
+===================================================== */
+
+:root {
+  --bg: #0d0b16;
+  --surface: #ffffff0b;
+  --surface-hover: #ffffff12;
+  --line: #ffffff1c;
+
+  --text: #f8f5ff;
+  --muted: #aaa4bb;
+
+  --accent: #c9a7ff;
+  --pink: #ffb8dc;
+  --purple: #8b5cf6;
+
+  --radius: 22px;
+  --transition: 0.35s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 15% 10%, #8b5cf625, transparent 32%),
+    radial-gradient(circle at 90% 85%, #ec48991c, transparent 32%),
+    var(--bg);
+
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: #c9a7ff55;
+  color: white;
+}
+
+
+/* =====================================================
+   2. BACKGROUND DECORATION
+===================================================== */
+
+.orb {
+  position: fixed;
+  width: 28rem;
+  height: 28rem;
+
+  border-radius: 50%;
+  filter: blur(110px);
+
+  opacity: 0.12;
+  pointer-events: none;
+
+  animation: orbFloat 12s ease-in-out infinite alternate;
+}
+
+.o1 {
+  top: -14rem;
+  left: -10rem;
+  background: #8b5cf6;
+}
+
+.o2 {
+  right: -14rem;
+  bottom: -14rem;
+  background: #ec4899;
+  animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(35px, 25px) scale(1.12);
+  }
+}
+
+
+/* =====================================================
+   3. SCREEN TRANSITIONS
+===================================================== */
+
+.screen {
+  position: fixed;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transform: translateY(15px) scale(0.985);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease,
+    visibility 0.55s;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.screen.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.center {
+  width: min(900px, 100%);
+  margin: auto;
+  text-align: center;
+}
+
+.wide {
+  max-width: 1000px;
+}
+
+
+/* =====================================================
+   4. GLASS EFFECT
+===================================================== */
+
+.glass {
+  background: linear-gradient(
+    145deg,
+    #ffffff12,
+    #ffffff05
+  );
+
+  border: 1px solid var(--line);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 25px 80px #0006,
+    inset 0 1px 0 #ffffff0b;
+}
+
+.card {
+  width: min(460px, 100%);
+  padding: 48px;
+
+  border-radius: 30px;
+
+  animation: cardAppear 0.8s ease both;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================================
+   5. TYPOGRAPHY
+===================================================== */
+
+.symbol {
+  font-size: 30px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin-bottom: 13px;
+
+  color: var(--accent);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: clamp(48px, 8vw, 72px);
+}
+
+h2 {
+  font-size: clamp(42px, 7vw, 78px);
+}
+
+h2 em {
+  color: var(--pink);
+}
+
+h3 {
+  font-size: 34px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.quote {
+  min-height: 50px;
+  margin-top: 18px;
+
+  color: var(--pink);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   6. PASSWORD FORM
+===================================================== */
+
+#login {
+  margin-top: 32px;
+  text-align: left;
+}
+
+#login label {
+  display: block;
+  margin-bottom: 9px;
+
+  font-size: 12px;
+  color: #e9e1f5;
+}
+
+.input {
+  display: flex;
+  overflow: hidden;
+
+  background: #0003;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+
+  transition: border-color var(--transition);
+}
+
+.input:focus-within {
+  border-color: #c9a7ff99;
+  box-shadow: 0 0 0 4px #c9a7ff12;
+}
+
+.input input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 15px;
+
+  background: none;
+  border: 0;
+  outline: 0;
+
+  color: var(--text);
+}
+
+.input input::placeholder {
+  color: #777080;
+}
+
+.input button {
+  width: 50px;
+  flex-shrink: 0;
+
+  background: none;
+  border: 0;
+
+  color: var(--muted);
+  transition: color var(--transition);
+}
+
+.input button:hover {
+  color: white;
+}
+
+.error {
+  min-height: 27px;
+  padding-top: 7px;
+
+  color: #ff8fae;
+  font-size: 12px;
+}
+
+.hint {
+  margin-top: 20px;
+
+  color: #827b91;
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   7. BUTTONS
+===================================================== */
+
+.primary,
+.secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 15px 18px;
+
+  border-radius: 13px;
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.primary {
+  background: linear-gradient(
+    135deg,
+    #d9c3ff,
+    #ffbfdf
+  );
+
+  border: 0;
+
+  color: #17121f;
+  font-weight: 700;
+
+  box-shadow: 0 8px 25px #c9a7ff20;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px #c9a7ff35;
+}
+
+.primary:active,
+.secondary:active {
+  transform: scale(0.97);
+}
+
+.secondary {
+  justify-content: center;
+
+  background: #ffffff09;
+  border: 1px solid var(--line);
+
+  color: var(--text);
+}
+
+.secondary:hover {
+  background: var(--surface-hover);
+  border-color: #c9a7ff66;
+}
+
+.small {
+  width: min(280px, 100%);
+  margin: 24px auto 0;
+}
+
+
+/* =====================================================
+   8. GIFT BOX
+===================================================== */
+
+.gift {
+  position: relative;
+
+  width: 190px;
+  height: 180px;
+
+  margin: 45px auto 12px;
+
+  background: none;
+  border: 0;
+
+  animation: float 3s ease-in-out infinite;
+}
+
+.gift i {
+  position: absolute;
+  display: block;
+}
+
+.box {
+  left: 28px;
+  bottom: 20px;
+
+  width: 135px;
+  height: 100px;
+
+  background: linear-gradient(
+    135deg,
+    #7b43d2,
+    #b86bd9
+  );
+
+  border-radius: 7px;
+}
+
+.lid {
+  left: 20px;
+  bottom: 110px;
+
+  width: 150px;
+  height: 32px;
+
+  background: #a967d7;
+  border-radius: 8px;
+
+  z-index: 3;
+
+  transition: 0.6s ease;
+}
+
+.ribbon {
+  left: 84px;
+  bottom: 20px;
+
+  width: 22px;
+  height: 132px;
+
+  background: #ffd0e9;
+  z-index: 4;
+}
+
+.glow {
+  top: -10px;
+  left: -15px;
+
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background: #c9a7ff33;
+  filter: blur(20px);
+
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.gift.open .lid {
+  transform: translateY(-65px) rotate(-5deg);
+}
+
+
+/* =====================================================
+   9. MAKE A WISH
+===================================================== */
+
+.candles {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  margin: 50px 0 30px;
+}
+
+.candle {
+  position: relative;
+
+  width: 35px;
+  height: 115px;
+
+  background: linear-gradient(
+    90deg,
+    #d7c2ff,
+    #9d72df
+  );
+
+  border: 0;
+  border-radius: 8px;
+
+  transition: transform var(--transition);
+}
+
+.candle:hover {
+  transform: translateY(-5px);
+}
+
+.candle b {
+  position: absolute;
+  top: -20px;
+  left: 10px;
+
+  width: 15px;
+  height: 25px;
+
+  border-radius: 60% 40% 60% 40%;
+
+  background: #ffb35c;
+  box-shadow: 0 0 25px #ffb35c;
+
+  transform: rotate(45deg);
+
+  transition: 0.3s ease;
+}
+
+.candle.off b {
+  opacity: 0;
+  transform: scale(0);
+}
+
+
+/* =====================================================
+   10. LETTER
+===================================================== */
+
+.envelope {
+  width: 240px;
+  height: 160px;
+
+  margin: 45px auto 20px;
+
+  background: linear-gradient(
+    145deg,
+    #7341b7,
+    #a968d4
+  );
+
+  border: 0;
+  border-radius: 12px;
+
+  color: white;
+  font-size: 70px;
+
+  box-shadow: 0 25px 60px #0006;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-7px) rotate(-2deg);
+  box-shadow: 0 30px 70px #0008;
+}
+
+.letter {
+  display: none;
+
+  width: min(650px, 100%);
+  margin: auto;
+  padding: 42px;
+
+  border-radius: 26px;
+}
+
+.letter.show {
+  display: block;
+  animation: rise 0.7s both;
+}
+
+.letter h2 {
+  margin-bottom: 25px;
+  font-size: clamp(38px, 6vw, 55px);
+}
+
+.letter p:not(.eyebrow) {
+  color: #d4ccdf;
+  line-height: 2;
+  white-space: pre-line;
+}
+
+
+/* =====================================================
+   11. DIGITAL BOUQUET
+===================================================== */
+
+.flowers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+
+  max-width: 760px;
+  margin: 35px auto 18px;
+}
+
+.flower {
+  padding: 18px 8px;
+
+  background: #ffffff08;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  color: var(--text);
+
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.flower:hover,
+.flower.selected {
+  transform: translateY(-6px);
+
+  background: #ffffff12;
+  border-color: #c9a7ff88;
+}
+
+.flower strong {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 42px;
+}
+
+.flower small {
+  color: var(--muted);
+}
+
+
+/* =====================================================
+   12. MEMORIES
+===================================================== */
+
+.memory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  margin: 30px auto 0;
+}
+
+.memory > div {
+  width: min(650px, 70vw);
+  min-width: 0;
+}
+
+.photo {
+  display: grid;
+  place-items: center;
+
+  height: min(45vh, 420px);
+
+  overflow: hidden;
+
+  background: #ffffff08;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  font-size: 70px;
+
+  box-shadow: 0 20px 50px #0004;
+}
+
+.photo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: inherit;
+
+  animation: photoAppear 0.5s ease both;
+}
+
+@keyframes photoAppear {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.memory small {
+  display: inline-block;
+  margin-top: 8px;
+
+  color: #8b8499;
+}
+
+.circle {
+  display: grid;
+  place-items: center;
+
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+
+  background: #ffffff09;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  color: white;
+
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.circle:hover {
+  background: #ffffff18;
+  transform: scale(1.08);
+}
+
+
+/* =====================================================
+   13. STORY
+===================================================== */
+
+.story {
+  width: min(720px, 100%);
+
+  margin: 25px auto;
+  padding: 40px;
+
+  border-radius: 25px;
+  text-align: left;
+
+  animation: rise 0.5s ease both;
+}
+
+.story small {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.story p:last-child {
+  margin-top: 15px;
+
+  color: #d0c7dc;
+  line-height: 1.9;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+
+  margin: 20px;
+}
+
+.dot {
+  width: 28px;
+  height: 3px;
+
+  background: #ffffff22;
+  border-radius: 99px;
+
+  transition: background var(--transition);
+}
+
+.dot.on {
+  background: var(--accent);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+
+/* =====================================================
+   14. WISH JAR
+===================================================== */
+
+.jar {
+  display: block;
+
+  margin: 30px auto 10px;
+
+  background: none;
+  border: 0;
+
+  font-size: 130px;
+
+  animation: float 3s ease-in-out infinite;
+
+  transition: filter var(--transition);
+}
+
+.jar:hover {
+  filter: drop-shadow(0 0 25px #c9a7ff88);
+  animation-duration: 1s;
+}
+
+.jar:active {
+  transform: scale(0.9);
+}
+
+
+/* =====================================================
+   15. ENDING
+===================================================== */
+
+.ending .line {
+  width: 80px;
+  height: 1px;
+
+  margin: 30px auto 15px;
+
+  background: var(--line);
+}
+
+.ending small {
+  color: #8b8499;
+}
+
+.ending .secondary {
+  margin-top: 25px;
+}
+
+
+/* =====================================================
+   16. TOAST
+===================================================== */
+
+#toast {
+  position: fixed;
+  z-index: 100;
+
+  bottom: 25px;
+  left: 50%;
+
+  padding: 11px 18px;
+
+  background: #18131eee;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+
+  color: #eee;
+  font-size: 13px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translate(-50%, 20px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s;
+}
+
+#toast.show {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translate(-50%, 0);
+}
+
+
+/* =====================================================
+   17. CONFETTI
+===================================================== */
+
+#confetti {
+  position: fixed;
+  inset: 0;
+
+  z-index: 90;
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.conf {
+  position: absolute;
+  top: -20px;
+
+  width: 7px;
+  height: 12px;
+
+  background: var(--pink);
+  border-radius: 2px;
+
+  animation: fall var(--d) linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--x), 110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+
+/* =====================================================
+   18. ANIMATIONS
+===================================================== */
+
+@keyframes float {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================================
+   19. RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+  .screen {
+    padding: 18px;
+  }
+
+  .card {
+    padding: 32px 24px;
+  }
+
+  h1 {
+    font-size: 55px;
+  }
+
+  h2 {
+    font-size: clamp(40px, 12vw, 58px);
+  }
+
+  .flowers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .flower {
+    padding: 16px 8px;
+  }
+
+  .memory {
+    gap: 8px;
+  }
+
+  .memory > div {
+    width: 70vw;
+  }
+
+  .photo {
+    height: 38vh;
+  }
+
+  .circle {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .story {
+    padding: 28px 24px;
+  }
+
+  .letter {
+    padding: 28px 22px;
+  }
+
+  .letter h2 {
+    font-size: 40px;
+  }
+
+  .candles {
+    gap: 22px;
+  }
+
+  .jar {
+    font-size: 110px;
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 28px 18px;
+  }
+
+  .memory > div {
+    width: 65vw;
+  }
+
+  .photo {
+    height: 32vh;
+  }
+
+  .story {
+    padding: 24px 18px;
+  }
+}
+
+
+/* =====================================================
+   20. REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

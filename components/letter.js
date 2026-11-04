@@ -1,0 +1,1 @@
+const LetterComponent={init({envelope,card,title,msg,next,data,done}){envelope.onclick=()=>{if(envelope.dataset.open)return;envelope.dataset.open=1;envelope.style.transform='translateY(-8px)';title.textContent=data().title;msg.textContent=data().message;setTimeout(()=>card.classList.add('show'),400)};next.onclick=done}};

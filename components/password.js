@@ -1,0 +1,1 @@
+const PasswordComponent={init({form,input,toggle,error,getPassword,success}){toggle.onclick=()=>{const x=input.type==='password';input.type=x?'text':'password';toggle.textContent=x?'◉':'◌'};form.onsubmit=e=>{e.preventDefault();if(input.value.trim()!==getPassword()){error.textContent='Hmm... that\'s not it. Try again ♡';return}error.textContent='';success()}}};

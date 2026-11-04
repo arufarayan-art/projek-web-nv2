@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>For You ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+
+    <!-- Music -->
+    <audio id="music" loop></audio>
+
+
+    <main>
+
+        <!-- =====================================================
+             PASSWORD
+        ====================================================== -->
+        <section id="password" class="screen active">
+
+            <div class="glass card">
+
+                <div class="symbol">🔒</div>
+
+                <p class="eyebrow">
+                    A PRIVATE LITTLE WORLD
+                </p>
+
+                <h1>For You</h1>
+
+                <p class="muted">
+                    This little surprise is locked.<br>
+                    Only someone special knows the key.
+                </p>
+
+
+                <form id="login">
+
+                    <label for="pass">
+                        Enter the secret
+                    </label>
+
+                    <div class="input">
+
+                        <input
+                            id="pass"
+                            type="password"
+                            placeholder="Secret password"
+                        >
+
+                        <button
+                            id="show"
+                            type="button"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+                    <p id="error" class="error"></p>
+
+                    <button
+                        class="primary"
+                        type="submit"
+                    >
+                        UNLOCK <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <p class="hint">
+                    Hint:
+                    <span id="hint">
+                        someone special
+                    </span>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SURPRISE
+        ====================================================== -->
+        <section id="surprise" class="screen">
+
+            <div class="center">
+
+                <p class="eyebrow">
+                    YOU MADE IT
+                </p>
+
+                <h2>
+                    I made something<br>
+                    <em>just for you.</em>
+                </h2>
+
+                <p class="muted">
+                    Take your time.
+                    There's a little journey waiting inside.
+                </p>
+
+
+                <button
+                    id="gift"
+                    class="gift"
+                >
+                    <i class="glow"></i>
+                    <i class="box"></i>
+                    <i class="lid"></i>
+                    <i class="ribbon"></i>
+                </button>
+
+
+                <p
+                    id="giftText"
+                    class="eyebrow"
+                >
+                    OPEN ME
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MAKE A WISH
+        ====================================================== -->
+        <section id="wish" class="screen">
+
+            <div class="center">
+
+                <p class="eyebrow">
+                    A LITTLE WISH
+                </p>
+
+                <h2>
+                    Make a Wish
+                </h2>
+
+                <p class="muted">
+                    Think of something you truly want.
+                </p>
+
+
+                <div class="candles">
+
+                    <button class="candle">
+                        <b></b>
+                    </button>
+
+                    <button class="candle">
+                        <b></b>
+                    </button>
+
+                    <button class="candle">
+                        <b></b>
+                    </button>
+
+                </div>
+
+
+                <button
+                    id="wishBtn"
+                    class="primary small"
+                >
+                    MAKE MY WISH ✦
+                </button>
+
+
+                <p
+                    id="wishResult"
+                    class="quote"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             LETTER
+        ====================================================== -->
+        <section id="letter" class="screen">
+
+            <div class="center">
+
+                <p class="eyebrow">
+                    A LITTLE LETTER
+                </p>
+
+
+                <button
+                    id="envelope"
+                    class="envelope"
+                >
+                    <span>✉</span>
+                </button>
+
+
+                <article
+                    id="letterCard"
+                    class="glass letter"
+                >
+
+                    <p class="eyebrow">
+                        A LETTER FOR YOU
+                    </p>
+
+                    <h2 id="letterTitle">
+                        A Little Letter
+                    </h2>
+
+                    <p id="letterMsg"></p>
+
+
+                    <button
+                        id="letterNext"
+                        class="secondary"
+                    >
+                        Continue →
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BOUQUET
+        ====================================================== -->
+        <section id="bouquet" class="screen">
+
+            <div class="center wide">
+
+                <p class="eyebrow">
+                    A DIGITAL BOUQUET
+                </p>
+
+                <h2>
+                    Choose a Flower
+                </h2>
+
+                <p class="muted">
+                    Each flower has a little message.
+                </p>
+
+
+                <div
+                    id="flowers"
+                    class="flowers"
+                ></div>
+
+
+                <p
+                    id="flowerMsg"
+                    class="quote"
+                ></p>
+
+
+                <button
+                    id="flowerNext"
+                    class="secondary small"
+                >
+                    Continue →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MEMORIES
+        ====================================================== -->
+        <section id="memories" class="screen">
+
+            <div class="center wide">
+
+                <p class="eyebrow">
+                    OUR MEMORIES
+                </p>
+
+                <h2>
+                    Little Moments
+                </h2>
+
+
+                <div class="memory">
+
+                    <button
+                        id="prev"
+                        class="circle"
+                        type="button"
+                    >
+                        ←
+                    </button>
+
+
+                    <div>
+
+                        <div
+                            id="photo"
+                            class="photo"
+                        >
+                            📸
+                        </div>
+
+
+                        <p
+                            id="caption"
+                            class="muted"
+                        >
+                            Your first memory goes here.
+                        </p>
+
+
+                        <small id="counter">
+                            1 / 3
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        id="next"
+                        class="circle"
+                        type="button"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+
+                <button
+                    id="memoryNext"
+                    class="secondary small"
+                >
+                    Continue →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STORY
+        ====================================================== -->
+        <section id="story" class="screen">
+
+            <div class="center wide">
+
+                <p class="eyebrow">
+                    OUR LITTLE STORY
+                </p>
+
+
+                <h2 id="storyHead">
+                    The Beginning
+                </h2>
+
+
+                <!-- Chapter dots -->
+                <div
+                    id="dots"
+                    class="dots"
+                ></div>
+
+
+                <!-- Story content -->
+                <article class="glass story">
+
+                    <small id="storyNo">
+                        01
+                    </small>
+
+
+                    <p
+                        id="storyDate"
+                        class="eyebrow"
+                    ></p>
+
+
+                    <h3 id="storyTitle">
+                        The Beginning
+                    </h3>
+
+
+                    <p id="storyText">
+                        Your story begins here.
+                    </p>
+
+                </article>
+
+
+                <!-- Story controls -->
+                <div class="controls">
+
+                    <button
+                        id="storyPrev"
+                        class="circle"
+                        type="button"
+                    >
+                        ←
+                    </button>
+
+
+                    <button
+                        id="storyNext"
+                        class="primary small"
+                        type="button"
+                    >
+                        Next Chapter →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WISH JAR
+        ====================================================== -->
+       <section id="jar" class="screen">
+  <div class="center">
+
+    <p class="eyebrow">A JAR FULL OF WISHES</p>
+
+    <h2>Pick One</h2>
+
+    <button id="jarButton" class="jar" type="button">
+      🫙
+    </button>
+
+    <p id="jarMsg" class="quote"></p>
+
+    <button id="jarNext" class="secondary small" type="button">
+      Continue →
+    </button>
+
+  </div>
+</section>
+
+
+        <!-- =====================================================
+             ENDING
+        ====================================================== -->
+        <section id="ending" class="screen">
+
+            <div class="center ending">
+
+                <p class="eyebrow">
+                    AND THAT'S IT...
+                </p>
+
+
+                <h2>
+                    Happy Birthday,<br>
+
+                    <em id="name">
+                        You
+                    </em>
+
+                    ♡
+                </h2>
+
+
+                <p
+                    id="endingMsg"
+                    class="muted"
+                ></p>
+
+
+                <div class="line"></div>
+
+
+                <small>
+                    Made with ♡
+                </small>
+
+
+                <button
+                    id="replay"
+                    class="secondary small"
+                >
+                    Replay Experience
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         EFFECTS
+    ====================================================== -->
+
+    <div id="confetti"></div>
+
+    <div id="toast"></div>
+
+
+    <!-- =====================================================
+         COMPONENTS
+    ====================================================== -->
+
+    <script src="components/password.js"></script>
+    <script src="components/surprise.js"></script>
+    <script src="components/wish.js"></script>
+    <script src="components/letter.js"></script>
+    <script src="components/bouquet.js"></script>
+   <script src="components/memories.js"></script>
+    <script src="components/story.js"></script>
+    <script src="components/jar.js"></script>
+    <script src="components/ending.js"></script>
+
+
+    <!-- Main controller -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

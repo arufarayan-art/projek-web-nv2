@@ -1,0 +1,1 @@
+const WishComponent={init({candles,button,result,done}){candles.forEach(x=>x.onclick=()=>x.classList.toggle('off'));button.onclick=()=>{candles.forEach(x=>x.classList.add('off'));result.textContent='May your wish find its way to you. ✦';setTimeout(done,1500)}}};
